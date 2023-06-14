@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Contact</string>
-    <string name="title_home">聯絡人</string>
-    <string name="title_dashboard">操作</string>
-<!--    <string name="title_notifications">Notifications</string>-->
+    <string name="title_home">Contact</string>
+    <string name="title_home_v">聯絡人</string>
+
+    <string name="title_dashboard">Contact</string>
+    <string name="title_dashboard_v">操作</string>
+
+    <!--    <string name="title_notifications">Notifications</string>-->
 </resources>

@@ -29,16 +29,17 @@
             android:layout_gravity="center">
 
             <TextView
+                android:id="@+id/txtName"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="姓名顯示在這邊" />
+
+            <TextView
                 android:id="@+id/txtPhone"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="電話號碼顯示在這邊" />
 
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="姓名顯示在這邊" />
         </LinearLayout>
 
         <ImageButton
@@ -47,17 +48,22 @@
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_w"
             android:contentDescription="編輯"
-            android:background="@drawable/bg_white"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:padding="7dp"
+
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/pen" />
 
         <ImageButton
             android:id="@+id/btnDel"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:background="@drawable/bg_w"
             android:contentDescription="刪除"
-            android:background="@drawable/bg_white"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
+            android:padding="7dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/bin" />
 
     </LinearLayout>
 
