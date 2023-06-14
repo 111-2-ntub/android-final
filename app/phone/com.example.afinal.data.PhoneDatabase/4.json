@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 3,
-    "identityHash": "df35426ba3eac258e039d70adf21eae2",
+    "version": 4,
+    "identityHash": "b6cf6586ec8c58d19b527fb9ca8837e5",
     "entities": [
       {
         "tableName": "phone",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `phone` TEXT, `bathday` TEXT, `photo` BLOB)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `phone` TEXT, `bathday` TEXT, `photo` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -35,7 +35,7 @@
           {
             "fieldPath": "image",
             "columnName": "photo",
-            "affinity": "BLOB",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -52,7 +52,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'df35426ba3eac258e039d70adf21eae2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b6cf6586ec8c58d19b527fb9ca8837e5')"
     ]
   }
 }

@@ -10,10 +10,10 @@ import androidx.room.migration.AutoMigrationSpec
 
 // Database class after the version update.
 @Database(
-    version = 2,
+    version = 4,
     entities = [Phone::class],
     autoMigrations = [
-        AutoMigration (from = 1, to = 2,
+        AutoMigration (from = 3, to = 4,
                 spec = PhoneDatabase.MyAutoMigration::class
         ),
 

@@ -1,16 +1,22 @@
 package com.example.afinal
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.afinal.data.Phone
+import java.io.File
+import java.io.FileInputStream
 
 
 class MyAdapter() :
@@ -29,6 +35,7 @@ class MyAdapter() :
         val txtPhone: TextView
         val btnDel: ImageButton
         val btnEdit: ImageButton
+        val imageview:ImageView
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -36,6 +43,8 @@ class MyAdapter() :
             txtPhone = view.findViewById(R.id.txtPhone)
             btnDel = view.findViewById(R.id.btnDel)
             btnEdit = view.findViewById(R.id.btnEdit)
+            imageview=view.findViewById(R.id.imageView)
+
         }
 
     }
@@ -73,6 +82,13 @@ class MyAdapter() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtName.text = phoneList[position].name
         holder.txtPhone.text = phoneList[position].phone
+        Log.d("TAG", "onBindViewHolder:uri  ${phoneList[position].image}")
+        if(phoneList[position].image!=""){
+            holder.imageview.setImageBitmap(
+                phoneList[position].image?.let { getImageFromStorage(it) }
+            )
+
+        }
         holder.btnDel.setOnClickListener {
             Log.d("TAG", "onBindViewHolder: before")
             delListener?.onDel(position)
@@ -93,7 +109,17 @@ class MyAdapter() :
     fun getItem(position: Int): Phone {
         return phoneList.get(position)
     }
-
+    fun getImageFromStorage(path: String): Bitmap? {
+        var f = File(path);
+        var options = BitmapFactory.Options();
+        options.inJustDecodeBounds = false;
+if(        f.isFile()){
+    return BitmapFactory.decodeStream(FileInputStream(f), null, options)
+}
+        // Calculate inSampleSize
+//        options.inSampleSize = calculateInSampleSize(options, 512, 512);
+    return null
+    }
 
     interface DelListener {
         fun onDel(p:Int)
