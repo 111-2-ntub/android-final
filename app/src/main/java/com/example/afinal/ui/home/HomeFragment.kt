@@ -98,6 +98,7 @@ class HomeFragment : Fragment() {
     }
     fun showDelDialog( p:Phone) {
         val delDialog = DelDialog(this.requireContext())
+        delDialog.window?.attributes?.windowAnimations=R.style.PauseDialogAnimation
 
 
             delDialog

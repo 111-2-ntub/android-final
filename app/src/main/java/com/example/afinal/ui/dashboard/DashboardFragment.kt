@@ -86,6 +86,7 @@ class DashboardFragment : Fragment() {
         _binding!!.imageButton.setOnClickListener {
             var cal = Calendar.getInstance()
             context?.let { it1 ->
+
                 DatePickerDialog(
                     it1,
                     DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -255,7 +256,7 @@ class DashboardFragment : Fragment() {
         val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
 
         // Create imageDir
-        
+
         val mypath = File(directory, "image.jpg")
         var fos: FileOutputStream? = null
         try {
