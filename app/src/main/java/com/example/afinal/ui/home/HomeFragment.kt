@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.os.bundleOf
@@ -46,6 +48,11 @@ class HomeFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(this.context)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter=adapter
+        val animation = AnimationUtils.loadAnimation(this.context, R.anim.scale_in_center)
+        val layoutAnimationController = LayoutAnimationController(animation)
+        layoutAnimationController.order = LayoutAnimationController.ORDER_NORMAL
+        recyclerView.layoutAnimation = layoutAnimationController
+
 
         mPhoneViewModel=ViewModelProvider(this).get(PhoneViewModel::class.java)
         mPhoneViewModel.getAll.observe(viewLifecycleOwner, androidx.lifecycle.Observer {phone->

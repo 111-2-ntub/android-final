@@ -1,16 +1,20 @@
 package com.example.afinal
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.afinal.data.Phone
 
 
 class MyAdapter() :
+
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
 
@@ -33,7 +37,16 @@ class MyAdapter() :
             btnDel = view.findViewById(R.id.btnDel)
             btnEdit = view.findViewById(R.id.btnEdit)
         }
+
     }
+
+    override fun onViewAttachedToWindow(holder: ViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.itemView.clearAnimation()
+
+        holder.itemView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.scale_in_scroll))
+    }
+
 
     fun update(datasets: List<Phone>) {
         phoneList = datasets
