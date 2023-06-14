@@ -1,6 +1,7 @@
 package com.example.afinal.ui.home
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.afinal.DelDialog
 import com.example.afinal.MyAdapter
 import com.example.afinal.R
 import com.example.afinal.data.Phone
@@ -57,8 +59,8 @@ class HomeFragment : Fragment() {
 
         adapter.setDel(object : MyAdapter.DelListener {
             override fun onDel(p: Int) {
+                showDelDialog(adapter.getItem(p))
                 Log.d("TAG", "onDel: before")
-                mPhoneViewModel.delPhone(adapter.getItem(p))
                 Log.d("TAG", "onDel: ater")
                 Log.d("TAG", "onDel: ${mPhoneViewModel.getAll.value?.size}")
 
@@ -76,6 +78,7 @@ class HomeFragment : Fragment() {
 //                val action = SpecifyAmountFragmentDirections.confirmationAction(amount)
 
                 findNavController().navigate(R.id.action_navigation_home_to_navigation_dashboard,bundle)
+//                findNavController().
             }
 
         })
@@ -86,4 +89,26 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    fun showDelDialog( p:Phone) {
+        val delDialog = DelDialog(this.requireContext())
+
+
+            delDialog
+
+                .setCancel(object : DelDialog.IOnCancelListener {
+                    override fun onCancel(dialog: DelDialog?) {
+                        delDialog.dismiss()
+                    }
+                })
+                .setConfirm(object : DelDialog.IOnConfirmListener {
+                    override fun onConfirm(dialog: DelDialog?) {
+                        mPhoneViewModel.delPhone(p)
+
+
+                        delDialog.dismiss()
+                    }
+                }).show()
+        }
+
+
 }

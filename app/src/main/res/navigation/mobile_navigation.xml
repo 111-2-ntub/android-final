@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
+            app:destination="@+id/navigation_dashboard"
+
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -26,7 +29,9 @@
             android:defaultValue="0" />
         <action
             android:id="@+id/action_navigation_dashboard_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@+id/navigation_home"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
 <!--    <fragment-->
