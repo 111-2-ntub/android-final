@@ -8,6 +8,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
@@ -66,16 +67,20 @@ class DashboardFragment : Fragment() {
         val p_id = arguments?.getInt("id")
         val pre_phone = arguments?.getString("phone")
         val bathday = arguments?.getString("bathday")
+        val image_arg = arguments?.getString("image")
+
         if (user_name == null) {
 
 
-//        _binding!!.editTextDate.text
         } else {
-
+            if (image_arg != null) {
+                path=image_arg
+            }
             _binding!!.textView.text = "編輯聯絡人"
             _binding!!.txtName.setText(user_name)
             _binding!!.txtPhone.setText(pre_phone)
             _binding!!.editTextDate.setText(bathday)
+            binding.imageView2.setImageURI(Uri.parse(image_arg))
         }
 
 
@@ -108,7 +113,6 @@ class DashboardFragment : Fragment() {
             val name_e = _binding!!.txtName.text.toString()
             val phone_e = _binding!!.txtPhone!!.text.toString()
             val bathday_e = _binding!!.editTextDate.text.toString()
-            val image =path
             if (name_e != null && phone_e != null && bathday_e != null) {
                 if (pre_phone == null) {
                     Log.d("TAG", "phone==null ${pre_phone==null}")

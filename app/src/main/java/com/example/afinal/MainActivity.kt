@@ -1,5 +1,7 @@
 package com.example.afinal
-
+// 11136005 羅毓翔
+// 11136007 林哲卉
+// 11136008 郭溱卉
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity

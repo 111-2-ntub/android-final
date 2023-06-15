@@ -81,8 +81,9 @@ class HomeFragment : Fragment() {
             override fun onEdit(p: Int) {
                 val phone=adapter.getItem(p)
 
-                val bundle = bundleOf("user_name" to phone.name,"phone" to phone.phone,"id" to phone.id,"bathday" to phone.bathday.toString())
+                val bundle = bundleOf("user_name" to phone.name,"phone" to phone.phone,"id" to phone.id,"bathday" to phone.bathday.toString(),"image" to phone.image)
 //                val bundle = bundleOf("phone" to phone)
+//                var action
 //                val action = SpecifyAmountFragmentDirections.confirmationAction(amount)
 
                 findNavController().navigate(R.id.action_navigation_home_to_navigation_dashboard,bundle)
