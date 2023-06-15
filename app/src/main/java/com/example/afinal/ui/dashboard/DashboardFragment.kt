@@ -31,6 +31,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.Calendar
+import java.util.UUID
 
 
 class DashboardFragment : Fragment() {
@@ -108,18 +109,19 @@ class DashboardFragment : Fragment() {
             val phone_e = _binding!!.txtPhone!!.text.toString()
             val bathday_e = _binding!!.editTextDate.text.toString()
             val image =path
-            if (name_e != null && phone_e != null && bathday != null) {
+            if (name_e != null && phone_e != null && bathday_e != null) {
                 if (pre_phone == null) {
                     Log.d("TAG", "phone==null ${pre_phone==null}")
                     insert(name_e, phone_e, bathday_e)
                 } else {
                     Log.d("TAG", "phone!=null ${pre_phone==null}")
                     if (p_id != null) {
-                        update(name_e, phone_e, bathday, p_id)
+                        update(name_e, phone_e, bathday_e, p_id)
                     }
 
                 }
             } else {
+                Log.d("TAG", "bind else ${pre_phone==null}")
 
             }
 
@@ -256,8 +258,8 @@ class DashboardFragment : Fragment() {
         val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
 
         // Create imageDir
-
-        val mypath = File(directory, "image.jpg")
+        var u= UUID.randomUUID().toString()
+        val mypath = File(directory, "${u}.jpg")
         var fos: FileOutputStream? = null
         try {
             fos = FileOutputStream(mypath)
@@ -270,7 +272,7 @@ class DashboardFragment : Fragment() {
         } finally {
             fos!!.close()
         }
-        return directory.absolutePath+"/image.jpg"
+        return directory.absolutePath+"/${u}.jpg"
     }
 }
 

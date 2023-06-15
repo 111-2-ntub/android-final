@@ -1,5 +1,6 @@
 package com.example.afinal.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -96,7 +97,8 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    fun showDelDialog( p:Phone) {
+    @SuppressLint("SuspiciousIndentation")
+    fun showDelDialog(p:Phone) {
         val delDialog = DelDialog(this.requireContext())
         delDialog.window?.attributes?.windowAnimations=R.style.PauseDialogAnimation
 
